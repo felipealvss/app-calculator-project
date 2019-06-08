@@ -15,7 +15,7 @@ class CalcController{
 
     // Elements to be started when instantiating a new object of this class
     initialize(){
-        // Arrow Function, "new" feature 
+        // Arrow Function, "new" feature . In here, using the currentDate method. 
         setInterval( () => {
             this.displayDate = this.currentDate.toLocaleDateString(this._locale);
             this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
