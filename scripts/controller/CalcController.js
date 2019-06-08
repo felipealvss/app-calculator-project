@@ -1,10 +1,12 @@
+// Class CalcController
 
 class CalcController{
 
     // Defining class methods and attributes 
     constructor(){
-        // references to the respective items on the body HTML
+        // Locale reference
         this._locale = 'pt-BR';
+        // references to the respective items on the body HTML
         this._displayCalcDoc = document.querySelector('#display');
         this._dateDoc = document.querySelector('#data');
         this._timeDoc = document.querySelector('#hora');
@@ -47,6 +49,7 @@ class CalcController{
         this._timeDoc.innerHTML = newCurrentTime;
     }
 
+    // Method to use the Date() method
     get currentDate(){
         return new Date();
     }
