@@ -1,3 +1,4 @@
+
 class CalcController{
 
     // Defining class methods and attributes 
@@ -13,20 +14,26 @@ class CalcController{
         this.initialize();
     }
 
-    // Elements to be started when instantiating a new object of this class
+    // Elements to be started when instantiating a new object of this class 
     initialize(){
-        // Arrow Function, "new" feature . In here, using the currentDate method. 
+
+        this.setDisplayDateTime();
+        // Arrow Function ("new" feature) executing the method "setInterval" in a defined time interval . In here, using the currentDate method. 
         setInterval( () => {
-            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
-            this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
+            this.setDisplayDateTime();
         }, 1000);
+
+    }
+
+    setDisplayDateTime(){
+        this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+        this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
     }
 
     // Get & Set methods
     get displayCalc(){
         return this._displayCalcDoc.innerHTML;
     }
-
     set displayCalc(newDisplayCalc){
         this._displayCalcDoc.innerHTML = newDisplayCalc;
     }
@@ -34,7 +41,6 @@ class CalcController{
     get displayDate(){
         return this._dateDoc.innerHTML;
     }
-
     set displayDate(newcurrentDate){
         this._dateDoc.innerHTML = newcurrentDate;
     }
@@ -42,7 +48,6 @@ class CalcController{
     get displayTime(){
         return this._timeDoc.innerHTML;
     }
-
     set displayTime(newCurrentTime){
         this._timeDoc.innerHTML = newCurrentTime;
     }
@@ -51,7 +56,6 @@ class CalcController{
     get currentDate(){
         return new Date();
     }
-
     set currentDate(newDate){
         this._currentDate = newDate;
     }
