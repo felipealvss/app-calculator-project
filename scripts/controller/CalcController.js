@@ -1,5 +1,3 @@
-// Class CalcController
-
 class CalcController{
 
     // Defining class methods and attributes 
