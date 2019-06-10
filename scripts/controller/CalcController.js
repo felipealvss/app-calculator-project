@@ -11,6 +11,7 @@ class CalcController{
         this._dateDoc = document.querySelector('#data');
         this._timeDoc = document.querySelector('#hora');
         // Atributes from the class itself
+        this._operation = [];
         this._currentDate;
         this.initialize();
         this.initButtonsEvents();
@@ -28,6 +29,107 @@ class CalcController{
 
     }
 
+    // Methods that evolves math operations with the buttons and display informations
+    addOperation(numberValue){
+        
+        if (isNaN(this.lastItem())) {
+        // String or other value
+        
+            if(this.isOperator()){
+
+            }
+        } else {
+        // Integer
+            let newValue = this.lastItem().toString() + numberValue.toString();
+            this._operation.push(newValue);
+        }
+        
+        console.log(this._operation);
+    }
+    
+    lastItem(){
+        return this._operation[this._operation.length - 1];
+    }
+
+    isOperator(){
+
+    }
+
+    clearAll(){
+        
+        this._operation = [];
+    }
+
+    clearEntry(){
+        
+        this._operation.pop();
+    }
+
+    // Invalid entry or return
+    setError(){
+
+        this.displayCalc = 'Error';
+    }
+    
+    execBtn(execBtn){
+
+        switch(execBtn){
+
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                this.addOperation(parseInt(execBtn));
+            break;
+            
+            case 'ac':
+                this.clearAll();
+            break;
+
+            case 'ce':
+                this.clearEntry();
+            break;
+
+            case 'porcento':
+
+            break;
+
+            case 'divisao':
+
+            break;
+
+            case 'multiplicacao':
+
+            break;
+
+            case 'subtracao':
+
+            break;
+            
+            case 'soma':
+
+            break;
+
+            case 'igual':
+
+            break;
+
+            case 'ponto':
+
+            break;
+
+            default:
+                this.setError();
+            break;
+        }
+    }
+
     // This method will work with the "initButtonsEvents"
     addEventListenerAll(element, event, arrowFunc){
 
@@ -42,12 +144,13 @@ class CalcController{
     initButtonsEvents(){
         let buttons = document.querySelectorAll('#buttons g, #parts g');
 
-        buttons.forEach( (btn, index) => {
+        buttons.forEach( btn => {
 
             // the method "addEventListener" only support 1 interaction, in this occasion we do a new method called "addEventListenerAll" to work with others occasions, making this function more versatile
             this.addEventListenerAll(btn, 'click drag', evenFnc => {
 
-                console.log(btn.className.baseVal.replace('btn-',''));
+                let textBtn = btn.className.baseVal.replace('btn-','');
+                this.execBtn(textBtn);
             })
 
             // This function change the mouse style 
